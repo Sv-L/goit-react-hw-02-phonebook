@@ -35,7 +35,8 @@ export class App extends Component {
   };
 
   onChangeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
+    const filter = e.currentTarget.value.trim();
+    this.setState({ filter });
   };
 
   render() {
@@ -56,6 +57,7 @@ export class App extends Component {
             <h2>Contacts</h2>
             <Filter value={this.state.filter} onChange={this.onChangeFilter} />
             <ContactList
+              filter={this.state.filter}
               contacts={visibleContacts}
               onDeleteContact={this.deleteContact}
             />

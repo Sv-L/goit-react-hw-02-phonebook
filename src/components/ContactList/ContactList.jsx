@@ -1,7 +1,7 @@
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact, filter }) => {
   return contacts.length > 0 ? (
     <ul className={css['contacts-list']}>
       {contacts.map(({ id, name, number }) => (
@@ -18,6 +18,10 @@ const ContactList = ({ contacts, onDeleteContact }) => {
         </li>
       ))}
     </ul>
+  ) : filter !== '' ? (
+    <p className={css['contacts-text']}>
+      No saved contacts with the corresponding name.
+    </p>
   ) : (
     <p className={css['contacts-text']}>There is no contacts</p>
   );
