@@ -20,10 +20,10 @@ const ContactList = ({ contacts, onDeleteContact, filter }) => {
     </ul>
   ) : filter !== '' ? (
     <p className={css['contacts-text']}>
-      No saved contacts with the corresponding name.
+      There are no saved contacts with this name.
     </p>
   ) : (
-    <p className={css['contacts-text']}>There is no contacts</p>
+    <p className={css['contacts-text']}>There is no contacts.</p>
   );
 };
 export default ContactList;
