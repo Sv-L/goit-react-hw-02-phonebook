@@ -10,11 +10,21 @@ export class App extends Component {
     contacts: [],
     filter: '',
   };
-  deleteContact = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
-  };
+
+  componentDidMount() {
+    if (localStorage.getItem('contacts')) {
+      this.setState({ contacts: parseStorage('contacts') });
+    }
+  }
+
+  componentDidUpdate(rpevProps, prevState) {
+    if (this.state.contacts !== prevState) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      if (this.state.contacts.length === 0) {
+        localStorage.removeItem('contacts');
+      }
+    }
+  }
 
   checkName = name => {
     const normalizeDataName = name.toLowerCase();
@@ -40,20 +50,11 @@ export class App extends Component {
     this.setState({ filter });
   };
 
-  componentDidMount() {
-    if (localStorage.getItem('contacts')) {
-      this.setState({ contacts: parseStorage('contacts') });
-    }
-  }
-
-  componentDidUpdate(rpevProps, prevState) {
-    if (this.state.contacts !== prevState) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      if (this.state.contacts.length === 0) {
-        localStorage.removeItem('contacts');
-      }
-    }
-  }
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
   render() {
     const normalizedFilter = this.state.filter.toLowerCase();
