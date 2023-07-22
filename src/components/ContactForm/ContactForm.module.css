@@ -7,6 +7,7 @@
   background-color: maroon;
   border: 1px solid white;
   border-radius: 5px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), 0 28px 30px rgba(0, 0, 0, 0.3);
 }
 .label {
   display: flex;
@@ -18,6 +19,7 @@
   width: 200px;
   border-radius: 2px;
   border: none;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4);
 }
 .add-btn {
   padding: 10px;
@@ -28,6 +30,7 @@
   text-transform: uppercase;
   color: white;
   transition: scale 0.1s ease-in-out;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .add-btn:is(:hover, :focus) {
