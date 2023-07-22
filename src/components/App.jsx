@@ -43,6 +43,7 @@ export class App extends Component {
     } else {
       alert(`${data.name} is already in contacts.`);
     }
+    document.activeElement.blur();
   };
 
   onChangeFilter = e => {
