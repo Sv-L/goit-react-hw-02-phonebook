@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
+import parseStorage from './parseStorage';
 
 export class App extends Component {
   state = {
@@ -38,6 +39,21 @@ export class App extends Component {
     const filter = e.currentTarget.value.trim();
     this.setState({ filter });
   };
+
+  componentDidMount() {
+    if (localStorage.getItem('contacts')) {
+      this.setState({ contacts: parseStorage('contacts') });
+    }
+  }
+
+  componentDidUpdate(rpevProps, prevState) {
+    if (this.state.contacts !== prevState) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      if (this.state.contacts.length === 0) {
+        localStorage.removeItem('contacts');
+      }
+    }
+  }
 
   render() {
     const normalizedFilter = this.state.filter.toLowerCase();
