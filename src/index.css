@@ -29,19 +29,20 @@ ul {
 
 h1 {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4);
 }
 h2 {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: center;
   color: white;
   text-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4);
 }
 #root {
-  padding: 50px;
-  height: 100vh;
+  padding: 20px;
+  min-height: 100vh;
   background-color: darkred;
+  overflow: no-scroll;
 }
 
 .wrap {
